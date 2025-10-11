@@ -1,11 +1,11 @@
-import DogList from "@/components/DogList";
+import Hero from "@/components/home/Hero";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="">
       <main className="">
-        <DogList />
+        <Hero />
       </main>
       <footer className=""></footer>
     </div>

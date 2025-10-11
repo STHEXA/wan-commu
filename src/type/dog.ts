@@ -1,1 +1,4 @@
-export type Dog = {};
+export type RandomDogs = {
+  message: string[];
+  status: string;
+};
