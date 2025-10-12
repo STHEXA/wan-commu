@@ -9,7 +9,7 @@ export default async function Hero() {
   }
   console.log("data" + data.message);
   return (
-    <div className="bg-[url('/images/lawn.jpg')] pb-6 pt-36 overflow-hidden">
+    <div className="bg-[url('/images/lawn.jpg')] pb-6 pt-36 overflow-hidden flex justify-center items-center">
       <HeroSwiper images={data.message} />
     </div>
   );

@@ -3,11 +3,11 @@
 import { Navigation, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/scrollbar";
+import styles from "@/styles/hero.module.css";
 import Image from "next/image";
 import { extractBreed } from "@/utils/extractBreed";
+import { LuPawPrint } from "react-icons/lu";
 
 interface HeroSwiperProps {
   images: string[];
@@ -15,35 +15,43 @@ interface HeroSwiperProps {
 
 export default function HeroSwiper({ images }: HeroSwiperProps) {
   return (
-    <div className="[&_.swiper]:overflow-visible">
+    <div className=" relative">
       <Swiper
         modules={[Navigation, A11y, Autoplay]}
         spaceBetween={50}
         slidesPerView={1}
-        navigation
+        navigation={{
+          prevEl: "#button_prev",
+          nextEl: "#button_next",
+        }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
         loop
-        className="md:w-[600px] md:h-[450px] overflow-visible"
+        className="md:w-[600px] md:h-[500px]"
       >
         {images.map((image) => (
-          <SwiperSlide
-            key={image}
-            className="md:w-[600px] md:h-[450px] relative"
-          >
-            <p className="absolute top-[-20px] left-0 text-6xl text-white">
+          <SwiperSlide key={image} className={styles["swiper-slide"]}>
+            <p className="absolute top-[-10px] left-0 text-6xl text-white">
               {extractBreed(image)}
             </p>
-            <Image
-              src={image}
-              alt={image}
-              width={600}
-              height={450}
-              className="w-full h-full object-cover rounded-3xl"
-            />
+            <div className="md:w-[500px] md:h-[350px] relative">
+              <Image
+                src={image}
+                alt={image}
+                width={600}
+                height={450}
+                className="w-full h-full object-cover rounded-3xl shadow-2xl shadow-black"
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
+      <button id="button_prev" className={styles["swiper-button-prev"]}>
+        <LuPawPrint />
+      </button>
+      <button id="button_next" className={styles["swiper-button-next"]}>
+        <LuPawPrint />
+      </button>
     </div>
   );
 }
