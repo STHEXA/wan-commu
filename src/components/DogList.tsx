@@ -4,16 +4,28 @@ import Link from "next/link";
 export default async function DogList() {
   const res = await fetch("https://dog.ceo/api/breeds/list/all");
   const data = await res.json();
-  const breedList = Object.keys(data.message);
+  const message: Record<string, string[]> = data.message;
+  const breedList = Object.entries(message).flatMap(([key, values]) =>
+    values.length === 0 ? [key] : values.map((v) => `${v} ${key}`)
+  );
+  console.log("犬種一覧" + breedList);
+
   const breedImageList: string[] = await Promise.all(
     breedList.map(async (breed) => {
+      const parts = breed.split(" ");
+
+      const apiPath = parts.length === 1 ? parts[0] : `${parts[1]}/${parts[0]}`;
+
       const res = await fetch(
-        `https://dog.ceo/api/breed/${breed}/images/random`
+        `https://dog.ceo/api/breed/${apiPath}/images/random`
       );
       const data = await res.json();
-      return data.message;
+      return data.message as string;
     })
   );
+
+  console.log(breedImageList);
+
   return (
     <div className="flex justify-center gap-3 flex-col items-center">
       <h2 className="">犬種リスト</h2>

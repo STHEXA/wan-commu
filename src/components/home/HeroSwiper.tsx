@@ -15,7 +15,7 @@ interface HeroSwiperProps {
 
 export default function HeroSwiper({ images }: HeroSwiperProps) {
   return (
-    <div className=" relative">
+    <div className="relative">
       <Swiper
         modules={[Navigation, A11y, Autoplay]}
         spaceBetween={50}
@@ -31,7 +31,7 @@ export default function HeroSwiper({ images }: HeroSwiperProps) {
       >
         {images.map((image) => (
           <SwiperSlide key={image} className={styles["swiper-slide"]}>
-            <p className="absolute top-[-10px] left-0 text-6xl text-white">
+            <p className="absolute top-[5px] left-0 text-6xl text-white">
               {extractBreed(image)}
             </p>
             <div className="md:w-[500px] md:h-[350px] relative">
@@ -46,10 +46,16 @@ export default function HeroSwiper({ images }: HeroSwiperProps) {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button id="button_prev" className={styles["swiper-button-prev"]}>
+      <button
+        id="button_prev"
+        className={`${styles["swiper-button-prev"]} shadow-2xl shadow-black`}
+      >
         <LuPawPrint />
       </button>
-      <button id="button_next" className={styles["swiper-button-next"]}>
+      <button
+        id="button_next"
+        className={`${styles["swiper-button-next"]} shadow-2xl shadow-black`}
+      >
         <LuPawPrint />
       </button>
     </div>
