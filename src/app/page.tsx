@@ -1,5 +1,5 @@
 import DogList from "@/components/DogList";
-import Hero from "@/components/home/Hero";
+import Hero from "@/components/Hero";
 import Header from "@/components/layouts/Header";
 import Image from "next/image";
 
