@@ -33,7 +33,7 @@ export default async function DogList() {
       <ul className="flex gap-3 flex-wrap justify-center">
         {breedsList.map((breed, index) => (
           <li key={breed}>
-            <Link href="/">
+            <Link href={`/breeds/${breed}/`}>
               <div className="w-[300px] h-[225px]">
                 <Image
                   src={breedImageList[index]}
