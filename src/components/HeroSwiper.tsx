@@ -8,6 +8,7 @@ import styles from "@/styles/hero.module.css";
 import Image from "next/image";
 import { extractBreed } from "@/utils/extractBreed";
 import { LuPawPrint } from "react-icons/lu";
+import Link from "next/link";
 
 interface HeroSwiperProps {
   images: string[];
@@ -31,18 +32,20 @@ export default function HeroSwiper({ images }: HeroSwiperProps) {
       >
         {images.map((image) => (
           <SwiperSlide key={image} className={styles["swiper-slide"]}>
-            <p className="absolute top-[5px] left-0 text-6xl text-white whitespace-nowrap">
-              {extractBreed(image)}
-            </p>
-            <div className="md:w-[500px] md:h-[350px] relative">
-              <Image
-                src={image}
-                alt={image}
-                width={600}
-                height={450}
-                className="w-full h-full object-cover rounded-3xl shadow-2xl shadow-black"
-              />
-            </div>
+            <Link href={`/breeds/${extractBreed(image)}`}>
+              <p className="absolute top-[5px] left-0 text-6xl text-white whitespace-nowrap">
+                {extractBreed(image)}
+              </p>
+              <div className="md:w-[500px] md:h-[350px] relative">
+                <Image
+                  src={image}
+                  alt={image}
+                  width={600}
+                  height={450}
+                  className="w-full h-full object-cover rounded-3xl shadow-2xl shadow-black"
+                />
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
