@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notoJp.variable} antialiased`}>
+      <body className={`${notoJp.variable} antialiased bg-orange-100`}>
         <div className="flex justify-center items-center fixed z-[1000] mt-[15px] w-full">
           <Header />
         </div>

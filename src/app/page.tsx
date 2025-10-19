@@ -3,8 +3,8 @@ import RandomListWrap from "@/components/RandomListWrap";
 
 export default function Home() {
   return (
-    <div className="">
-      <main className="bg-orange-100">
+    <div>
+      <main>
         <Hero />
         <RandomListWrap />
       </main>
