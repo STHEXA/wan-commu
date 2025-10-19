@@ -16,15 +16,16 @@ export async function generateStaticParams() {
 }
 
 type BreedPageProps = {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 };
 
-export default function BreedPage({ params }: BreedPageProps) {
-  const [main, sub] = params.slug;
+export default async function BreedPage({ params }: BreedPageProps) {
+  const { slug } = await params;
+  const [main, sub] = slug;
   return (
-    <div>
+    <div className="pt-[150px]">
       <h2>{main}</h2>
       <p>{sub}</p>
     </div>
