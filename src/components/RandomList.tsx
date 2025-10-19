@@ -18,6 +18,12 @@ export default function RandomList({ breedsList }: RandomListProps) {
   const [list, setList] = useState(breedsList);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [animMap, setAnimMap] = useState<Record<string, string>>({});
+  const animations = [
+    "animate-wiggle",
+    "animate-bounce",
+    "animate-pulse-scale",
+  ];
 
   const handleReload = async () => {
     try {
@@ -42,6 +48,16 @@ export default function RandomList({ breedsList }: RandomListProps) {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleMouseEnter = (key: string) => {
+    const randomAnim =
+      animations[Math.floor(Math.random() * animations.length)];
+    setAnimMap((prev) => ({ ...prev, [key]: randomAnim }));
+  };
+
+  const handleMouseLeave = (key: string) => {
+    setAnimMap((prev) => ({ ...prev, [key]: "" }));
   };
 
   return (
@@ -74,7 +90,11 @@ export default function RandomList({ breedsList }: RandomListProps) {
           {list.map((img) => (
             <li
               key={img}
-              className="w-[300px] h-[200px] overflow-hidden rounded-3xl relative"
+              className={`w-[300px] h-[200px] overflow-hidden rounded-3xl relative ${
+                animMap[img] ?? ""
+              }`}
+              onMouseEnter={() => handleMouseEnter(img)}
+              onMouseLeave={() => handleMouseLeave(img)}
             >
               <Link href={`/breeds/${extractBreed(img)}/`}>
                 <Image
@@ -83,7 +103,7 @@ export default function RandomList({ breedsList }: RandomListProps) {
                   width={300}
                   height={225}
                   loading="eager"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform ease-in-out"
+                  className="w-full h-full object-cover"
                 />
                 <p className="absolute bottom-[10px] left-[5px] text-white bg-amber-600 rounded-3xl py-[5px] px-[10px]">
                   {extractBreed(img)}
