@@ -1,14 +1,12 @@
-import DogList from "@/components/DogList";
 import Hero from "@/components/Hero";
-import Header from "@/components/layouts/Header";
-import Image from "next/image";
+import RandomListWrap from "@/components/RandomListWrap";
 
 export default function Home() {
   return (
     <div className="">
-      <main className="">
+      <main className="bg-orange-100">
         <Hero />
-        <DogList />
+        <RandomListWrap />
       </main>
       <footer className=""></footer>
     </div>

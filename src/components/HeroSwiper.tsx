@@ -1,7 +1,7 @@
 "use client";
 
-import { Navigation, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, A11y, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "@/styles/hero.module.css";
@@ -31,7 +31,7 @@ export default function HeroSwiper({ images }: HeroSwiperProps) {
       >
         {images.map((image) => (
           <SwiperSlide key={image} className={styles["swiper-slide"]}>
-            <p className="absolute top-[5px] left-0 text-6xl text-white">
+            <p className="absolute top-[5px] left-0 text-6xl text-white whitespace-nowrap">
               {extractBreed(image)}
             </p>
             <div className="md:w-[500px] md:h-[350px] relative">
@@ -49,12 +49,14 @@ export default function HeroSwiper({ images }: HeroSwiperProps) {
       <button
         id="button_prev"
         className={`${styles["swiper-button-prev"]} shadow-2xl shadow-black`}
+        type="button"
       >
         <LuPawPrint />
       </button>
       <button
         id="button_next"
         className={`${styles["swiper-button-next"]} shadow-2xl shadow-black`}
+        type="button"
       >
         <LuPawPrint />
       </button>
