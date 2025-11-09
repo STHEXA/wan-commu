@@ -2,7 +2,7 @@ import DogList from "@/components/DogList";
 
 export default function DogListPage() {
   return (
-    <div>
+    <div className="pt-[150px]">
       <DogList />
     </div>
   );
