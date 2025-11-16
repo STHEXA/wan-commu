@@ -38,7 +38,7 @@ export default async function BreedPage({ params }: BreedPageProps) {
   return (
     <div className="pt-[150px] flex justify-center items-center">
       <div>
-        <DogImage breeds={breeds} image={dogImage} />
+        <DogImage breeds={newBreeds} image={dogImage} />
         <div>
           <h2>{breeds}</h2>
         </div>
