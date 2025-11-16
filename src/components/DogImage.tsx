@@ -13,13 +13,14 @@ interface DogImageProps {
 
 export default function DogImage({ breeds, image }: DogImageProps) {
   const { data, refetch, isFetching } = useQuery({
-    queryKey: [breeds, image],
+    queryKey: [breeds],
     queryFn: () => fetchOtherImage(breeds),
+    initialData: image,
     enabled: false,
   });
 
   const getOtherImage = async () => {
-    refetch();
+    await refetch();
   };
 
   return (
