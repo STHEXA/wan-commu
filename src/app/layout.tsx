@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
+import { ReactQueryProvider } from "../lib/providers";
 
 const notoJp = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
@@ -25,7 +26,7 @@ export default function RootLayout({
         <div className="flex justify-center items-center fixed z-[1000] mt-[15px] w-full">
           <Header />
         </div>
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );
