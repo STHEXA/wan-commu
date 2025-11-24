@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const navList = [
-  {
-    label: "犬種一覧",
-    url: "/dog-list",
-  },
-  {},
-];
+import { FaListUl } from "react-icons/fa";
 
 export default function Header() {
   return (
@@ -25,9 +18,14 @@ export default function Header() {
         <nav>
           <ul>
             <li>
-              <Link href="/dog-list">犬種一覧</Link>
+              <Link
+                href="/dog-list"
+                className="flex items-center gap-3 hover:opacity-50 transition-opacity duration-300 ease-in-out"
+              >
+                <FaListUl />
+                <span className="pb-[3px]">犬種一覧</span>
+              </Link>
             </li>
-            <li></li>
           </ul>
         </nav>
       </div>

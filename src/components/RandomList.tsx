@@ -87,9 +87,10 @@ export default function RandomList({ breedsList }: RandomListProps) {
         />
       ) : (
         <ul className="flex flex-wrap gap-[30px] items-center justify-center">
-          {list.map((img) => (
+          {list.map((img, index) => (
             <li
-              key={img}
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              key={`${img}-${index}`}
               className={`w-[300px] h-[200px] overflow-hidden rounded-3xl relative ${
                 animMap[img] ?? ""
               }`}
