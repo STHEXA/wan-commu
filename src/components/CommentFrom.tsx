@@ -1,5 +1,6 @@
 import { BiCommentDetail } from "react-icons/bi";
 import { Button } from "./ui/button";
+import { createComment } from "@/actions/createComment";
 
 export default function CommentFrom() {
   return (
@@ -9,7 +10,7 @@ export default function CommentFrom() {
         コメントを投稿
       </p>
       <form
-        action=""
+        action={createComment}
         className="border-2 border-amber-500 rounded-3xl p-[16px] flex flex-col gap-3 mt-6"
       >
         <input

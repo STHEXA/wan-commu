@@ -1,6 +1,7 @@
 "use server";
 
 import { CommentPost } from "@/lib/zod/schema";
+import { commentRepository } from "@/repositories/commentRepository";
 
 export const createComment = async (formData: FormData) => {
   const parsed = CommentPost.safeParse({
@@ -14,4 +15,5 @@ export const createComment = async (formData: FormData) => {
 
   // DB登録
   await commentRepository.create(parsed.data);
+  console.log("DBに登録内容を保存");
 };
